@@ -1,41 +1,27 @@
-const apiURL = "https://trackapi.nutritionix.com/v2/search/instant?query="
 const formContainer = document.getElementById('container');
 const nameForm = document.getElementById('nameForm');
 const content = document.getElementById('menus');
 const searchForm = document.getElementById('search-form')
 const searchBar = document.getElementById('search-bar')
 const searchResults = document.getElementById('search-results')
-const commonURL = "https://trackapi.nutritionix.com/v2/natural/nutrients"
-const brandedURL = " https://trackapi.nutritionix.com/v2/search/item?nix_item_id="
 const addButton = document.getElementById('add-to-intake-btn');
 const backButton = document.getElementById('back-btn');
-
-
-function updateNutritionTable(name, calValue, cholValue, fiberValue, potassiumValue, proteinValue, saturatedFatValue, sodiumValue, sugarsValue, totalCarbsValue, totalFatValue) {
-    const calorieValueCell = document.getElementById('calorie-value');
-    const cholValueCell = document.getElementById('cholesterol-value');
-    const fiberValueCell = document.getElementById('dietary-fibers-value');
-    const potassiumValueCell = document.getElementById('potassium-value');
-    const proteinValueCell = document.getElementById('protein-value');
-    const satFatValueCell = document.getElementById('saturated-fat-value');
-    const sodiumValueCell = document.getElementById('sodium-value');
-    const sugarValueCell = document.getElementById('sugars-value');
-    const totalCarbsValueCell = document.getElementById('total-carbohydrates-value');
-    const fatsValueCell = document.getElementById('total-fat-value');
-    const nameCell = document.getElementById('item-name');
-
-    calorieValueCell.innerText = calValue;
-    cholValueCell.innerText = cholValue;
-    fiberValueCell.innerText = fiberValue;
-    potassiumValueCell.innerText = potassiumValue;
-    proteinValueCell.innerText = proteinValue;
-    satFatValueCell.innerText = saturatedFatValue;
-    sodiumValueCell.innerText = sodiumValue;
-    sugarValueCell.innerText = sugarsValue;
-    totalCarbsValueCell.innerText = totalCarbsValue;
-    fatsValueCell.innerText = totalFatValue;
-    nameCell.innerText = name
-}
+// nutrition table cells
+const calorieValueCell = document.getElementById('calorie-value');
+const cholValueCell = document.getElementById('cholesterol-value');
+const fiberValueCell = document.getElementById('dietary-fibers-value');
+const potassiumValueCell = document.getElementById('potassium-value');
+const proteinValueCell = document.getElementById('protein-value');
+const satFatValueCell = document.getElementById('saturated-fat-value');
+const sodiumValueCell = document.getElementById('sodium-value');
+const sugarValueCell = document.getElementById('sugars-value');
+const totalCarbsValueCell = document.getElementById('total-carbohydrates-value');
+const fatsValueCell = document.getElementById('total-fat-value');
+const nameCell = document.getElementById('item-name');
+// API URLs
+const commonURL = "https://trackapi.nutritionix.com/v2/natural/nutrients"
+const brandedURL = " https://trackapi.nutritionix.com/v2/search/item?nix_item_id="
+const apiURL = "https://trackapi.nutritionix.com/v2/search/instant?query="
 
 function toggleOptions() {
     const results = document.getElementById('results');
@@ -56,6 +42,21 @@ function onBackClick() {
 }
 
 backButton.addEventListener('click', onBackClick)
+
+function updateNutritionTable(name, calValue, cholValue, fiberValue, potassiumValue, proteinValue, saturatedFatValue, sodiumValue, sugarsValue, totalCarbsValue, totalFatValue) {
+
+    calorieValueCell.innerText = calValue;
+    cholValueCell.innerText = cholValue;
+    fiberValueCell.innerText = fiberValue;
+    potassiumValueCell.innerText = potassiumValue;
+    proteinValueCell.innerText = proteinValue;
+    satFatValueCell.innerText = saturatedFatValue;
+    sodiumValueCell.innerText = sodiumValue;
+    sugarValueCell.innerText = sugarsValue;
+    totalCarbsValueCell.innerText = totalCarbsValue;
+    fatsValueCell.innerText = totalFatValue;
+    nameCell.innerText = name
+}
 
 function onBrandedClick(event) {
     let itemID = event.target.id;
@@ -152,12 +153,6 @@ function createCommonElement(name) {
 
 }
 
-function clearList() {
-    while (searchResults.firstChild) {
-        searchResults.removeChild(searchResults.firstChild);
-    }
-}
-
 function populateList() {
     let query = searchBar.value
     console.log(query)
@@ -177,6 +172,12 @@ function populateList() {
                 createCommonElement(item["food_name"])
             }
         })
+}
+
+function clearList() {
+    while (searchResults.firstChild) {
+        searchResults.removeChild(searchResults.firstChild);
+    }
 }
 
 function onQuerySubmit(event) {
