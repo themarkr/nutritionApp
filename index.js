@@ -10,7 +10,6 @@ const brandedURL = " https://trackapi.nutritionix.com/v2/search/item?nix_item_id
 const addButton = document.getElementById('add-to-intake-btn');
 const backButton = document.getElementById('back-btn');
 
-
 function updateNutritionTable(name, calValue, cholValue, fiberValue, potassiumValue, proteinValue, saturatedFatValue, sodiumValue, sugarsValue, totalCarbsValue, totalFatValue) {
     const calorieValueCell = document.getElementById('calorie-value');
     const cholValueCell = document.getElementById('cholesterol-value');
@@ -54,7 +53,6 @@ function onBackClick() {
     nutritionTable.style.display = "none"
 
 }
-
 backButton.addEventListener('click', onBackClick)
 
 function onBrandedClick(event) {
@@ -190,8 +188,5 @@ function onNameSubmit(event) {
     event.preventDefault();
     formContainer.style.display = "none";
     content.style.display = "inline-block";
-
 }
 nameForm.addEventListener('submit', onNameSubmit);
-
-const postURL = "https://trackapi.nutritionix.com/v2/natural/nutrients"
