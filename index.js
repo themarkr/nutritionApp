@@ -7,9 +7,57 @@ const searchBar = document.getElementById('search-bar')
 const searchResults = document.getElementById('search-results')
 const commonURL = "https://trackapi.nutritionix.com/v2/natural/nutrients"
 const brandedURL = " https://trackapi.nutritionix.com/v2/search/item?nix_item_id="
+const addButton = document.getElementById('add-to-intake-btn');
+const backButton = document.getElementById('back-btn');
+
+
+function updateNutritionTable(name, calValue, cholValue, fiberValue, potassiumValue, proteinValue, saturatedFatValue, sodiumValue, sugarsValue, totalCarbsValue, totalFatValue) {
+    const calorieValueCell = document.getElementById('calorie-value');
+    const cholValueCell = document.getElementById('cholesterol-value');
+    const fiberValueCell = document.getElementById('dietary-fibers-value');
+    const potassiumValueCell = document.getElementById('potassium-value');
+    const proteinValueCell = document.getElementById('protein-value');
+    const satFatValueCell = document.getElementById('saturated-fat-value');
+    const sodiumValueCell = document.getElementById('sodium-value');
+    const sugarValueCell = document.getElementById('sugars-value');
+    const totalCarbsValueCell = document.getElementById('total-carbohydrates-value');
+    const fatsValueCell = document.getElementById('total-fat-value');
+    const nameCell = document.getElementById('item-name');
+
+    calorieValueCell.innerText = calValue;
+    cholValueCell.innerText = cholValue;
+    fiberValueCell.innerText = fiberValue;
+    potassiumValueCell.innerText = potassiumValue;
+    proteinValueCell.innerText = proteinValue;
+    satFatValueCell.innerText = saturatedFatValue;
+    sodiumValueCell.innerText = sodiumValue;
+    sugarValueCell.innerText = sugarsValue;
+    totalCarbsValueCell.innerText = totalCarbsValue;
+    fatsValueCell.innerText = totalFatValue;
+    nameCell.innerText = name
+}
+
+function toggleOptions() {
+    const results = document.getElementById('results');
+    results.style.display = "none";
+}
+
+function toggleTable() {
+    const nutritionTable = document.getElementById('nutrition-facts');
+    nutritionTable.style.display = "inline-block";
+}
+
+function onBackClick() {
+    const results = document.getElementById('results');
+    const nutritionTable = document.getElementById('nutrition-facts');
+    results.style.display = "inline-block";
+    nutritionTable.style.display = "none"
+
+}
+
+backButton.addEventListener('click', onBackClick)
 
 function onBrandedClick(event) {
-    it
     let itemID = event.target.id;
     console.log(itemID);
     fetch(`${brandedURL}${itemID}`, {
@@ -20,7 +68,23 @@ function onBrandedClick(event) {
                 "x-app-key": "73e7c09306612d387cae4354694b0291"
             }
         }).then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+            console.log(data.foods[0])
+            let calories = data.foods[0]["nf_calories"];
+            let cholesterol = data.foods[0]["nf_cholesterol"];
+            let diataryFibers = data.foods[0]["nf_dietary_fiber"];
+            let potassium = data.foods[0]["nf_potassium"];
+            let protein = data.foods[0]["nf_protein"];
+            let saturatedFat = data.foods[0]["nf_saturated_fat"];
+            let sodium = data.foods[0]["nf_sodium"];
+            let sugars = data.foods[0]["nf_sugars"];
+            let totalCarbs = data.foods[0]["nf_total_carbohydrate"];
+            let totalFat = data.foods[0]["nf_total_fat"];
+            console.log(calories, cholesterol, diataryFibers, potassium, protein, saturatedFat, sodium, sugars, totalCarbs, totalFat)
+            toggleOptions();
+            toggleTable();
+            updateNutritionTable(calories, cholesterol, diataryFibers, potassium, protein, saturatedFat, sodium, sugars, totalCarbs, totalFat)
+        })
 }
 
 function onCommonClick(event) {
@@ -38,7 +102,23 @@ function onCommonClick(event) {
                 "query": itemID
             })
         }).then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+            let calories = data.foods[0]["nf_calories"];
+            let cholesterol = data.foods[0]["nf_cholesterol"];
+            let diataryFibers = data.foods[0]["nf_dietary_fiber"];
+            let potassium = data.foods[0]["nf_potassium"];
+            let protein = data.foods[0]["nf_protein"];
+            let saturatedFat = data.foods[0]["nf_saturated_fat"];
+            let sodium = data.foods[0]["nf_sodium"];
+            let sugars = data.foods[0]["nf_sugars"];
+            let totalCarbs = data.foods[0]["nf_total_carbohydrate"];
+            let totalFat = data.foods[0]["nf_total_fat"];
+            let foodName = data.foods[0]["food_name"]
+            console.log(calories, cholesterol, diataryFibers, potassium, protein, saturatedFat, sodium, sugars, totalCarbs, totalFat)
+            toggleOptions();
+            toggleTable();
+            updateNutritionTable(foodName, calories, cholesterol, diataryFibers, potassium, protein, saturatedFat, sodium, sugars, totalCarbs, totalFat)
+        })
 }
 
 function createBrandedElement(name, itemID) {
@@ -72,8 +152,13 @@ function createCommonElement(name) {
 
 }
 
-function onQuerySubmit(event) {
-    event.preventDefault();
+function clearList() {
+    while (searchResults.firstChild) {
+        searchResults.removeChild(searchResults.firstChild);
+    }
+}
+
+function populateList() {
     let query = searchBar.value
     console.log(query)
     fetch(`${apiURL}${query}&detailed=true`, {
@@ -92,6 +177,12 @@ function onQuerySubmit(event) {
                 createCommonElement(item["food_name"])
             }
         })
+}
+
+function onQuerySubmit(event) {
+    event.preventDefault();
+    clearList();
+    populateList();
 }
 searchForm.addEventListener('submit', onQuerySubmit)
 
