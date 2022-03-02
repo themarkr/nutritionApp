@@ -21,17 +21,46 @@
     <!-- NAVIGATION BAR -->
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1">Navbar</span>
+            <span class="navbar-brand mb-0 h1">Meal Tracker</span>
         </div>
-        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Toggle right offcanvas</button>
+        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">View Daily Intake</button>
         <!-- DAILY INTAKE TRACKER -->
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header">
-                <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+                <h5 id="offcanvasRightLabel">Daily Intake Breakdown</h5>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-                ...
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                      Breakfast
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="#">Food Item 1</a></li>
+                        <li><a class="dropdown-item" href="#">Food Item 2</a></li>
+                        <li><a class="dropdown-item" href="#">Food Item 3</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                      Lunch
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                      Dinner
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </nav>
@@ -52,7 +81,7 @@
     <!-- MAIN CONTENT -->
     <div id="menus" style="display: none">
         <!-- FOOD ITEM SEARCH BAR -->
-        <div id="search-for-item" class="container-fluid">
+        <div id="results" class="container-fluid">
             <form class="d-flex" id=search-form>
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="search-bar">
                 <button class="btn btn-outline-success" type="submit">Search</button>
@@ -62,36 +91,83 @@
             </ol>
         </div>
         <!-- NUTRITION FACTS TABLE -->
-        <div id="nutrition-facts" class="third">
+        <div id="nutrition-facts" class="third" style="display: none">
             <table class="table table-success table-striped">
                 <thead>
                     <tr>
-                        <th scope="col"></th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col" id="item-name"></th>
+                        <th scope="col">Value</th>
+                        <th scope="col">Units</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <th scope="row">Calories</th>
+                        <td id="calorie-value"></td>
+                        <td id="calorie-units"></td>
                     </tr>
                     <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
+                        <th scope="row">Cholesterol</th>
+                        <td id="cholesterol-value"></td>
+                        <td id="cholesterol-units">mg</td>
                     </tr>
                     <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
+                        <th scope="row">Dietary Fibers</th>
+                        <td id="dietary-fibers-value"></td>
+                        <td id="dietary-fibers-units">g</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Potassium</th>
+                        <td id="potassium-value"></td>
+                        <td id="potassium-units">mg</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Protein</th>
+                        <td id="protein-value"></td>
+                        <td id="protein-units">g</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Saturated Fat</th>
+                        <td id="saturated-fat-value"></td>
+                        <td id="saturated-fat-units">g</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Sodium</th>
+                        <td id="sodium-value"></td>
+                        <td id="sodium-units">mg</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Sugars</th>
+                        <td id="sugars-value"></td>
+                        <td id="sugars-units">g</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Total Carbohydrates</th>
+                        <td id="total-carbohydrates-value"></td>
+                        <td id="total-carobohydrates-units">g</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Total Fat</th>
+                        <td id="total-fat-value"></td>
+                        <td id="total-fat-units">g</td>
                     </tr>
                 </tbody>
             </table>
+            <button type="button" class="btn btn-success" id="add-to-intake-btn">Add to Daily Intake</button>
+            <div class="btn-group">
+                <button class="btn btn-secondary" type="button">
+                  Meal Category
+                </button>
+                <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span class="visually-hidden">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Breakfast</a></li>
+                    <li><a class="dropdown-item" href="#">Lunch</a></li>
+                    <li><a class="dropdown-item" href="#">Dinner</a></li>
+                </ul>
+            </div>
+            <button type="button" class="btn btn-warning" id="back-btn">Back to Selection</button>
         </div>
 
     </div>
