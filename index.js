@@ -2,7 +2,7 @@ const formContainer = document.getElementById('container');
 const nameForm = document.getElementById('nameForm');
 const firstNameBar = document.getElementById('firstName');
 const lastNameBar = document.getElementById('lastName');
-const content = document.getElementById('menus');
+const nutritionDiv = document.getElementById('results');
 const searchForm = document.getElementById('search-form');
 const searchBar = document.getElementById('search-bar');
 const searchResults = document.getElementById('search-results')
@@ -64,13 +64,13 @@ function toggleOptions() {
 
 function toggleTable() {
     const nutritionTable = document.getElementById('nutrition-facts');
-    nutritionTable.style.display = "inline-block";
+    nutritionTable.style.display = "flex";
 }
 
 function onBackClick() {
     const results = document.getElementById('results');
     const nutritionTable = document.getElementById('nutrition-facts');
-    results.style.display = "inline-block";
+    results.style.display = "flex";
     nutritionTable.style.display = "none"
     text.innerHTML = `Results for: ${searchBar.value}`;
 }
@@ -78,15 +78,12 @@ function onBackClick() {
 function onXclick() {
     clearList();
 }
-searchBar.addEventListener('click', onXclick)
 
 function onDailyClick() {
     const badge = document.getElementById('badge');
     badge.style.display = "none";
     badge.innerText = "0";
 }
-
-dailyBtn.addEventListener('click', onDailyClick);
 
 function updateBadge() {
     const badge = document.getElementById('badge');
@@ -146,19 +143,11 @@ function onAdd(event) {
         updateDailyTable(cal, chol, fiber, potass, protein, sFat, sodium, sugars, totCarbs, totFat);
     }
 }
-addButton.addEventListener('click', onAdd);
 
 function onCategoryClick(event) {
     let option = event.target.innerText
     document.getElementById('meal-category-btn').innerText = option;
 }
-
-breakfastOption.addEventListener('click', onCategoryClick)
-lunchOption.addEventListener('click', onCategoryClick)
-dinnerOption.addEventListener('click', onCategoryClick)
-
-
-backButton.addEventListener('click', onBackClick)
 
 function updateNutritionTable(name, calValue, cholValue, fiberValue, potassiumValue, proteinValue, saturatedFatValue, sodiumValue, sugarsValue, totalCarbsValue, totalFatValue) {
 
@@ -316,20 +305,27 @@ function onQuerySubmit(event) {
     populateList();
     text.innerText = `Results for: ${searchBar.value}`;
 }
-searchForm.addEventListener('submit', onQuerySubmit)
 
 function displaySearchForItem() {
     text.innerText = "Search for any food item"
 }
 
-searchBar.addEventListener('click', displaySearchForItem)
-
 function onNameSubmit(event) {
     event.preventDefault();
     formContainer.style.display = "none";
-    content.style.display = "inline-block";
+    nutritionDiv.style.display = "flex";
     text.innerText = `Welcome ${firstNameBar.value} ${lastNameBar.value}`;
     userOffCanvasLabel.innerText = `${firstNameBar.value}'s Daily Intake`
     landingImg.style.display = "none"
 }
 nameForm.addEventListener('submit', onNameSubmit);
+searchBar.addEventListener('click', displaySearchForItem)
+searchBar.addEventListener('click', onXclick)
+searchForm.addEventListener('submit', onQuerySubmit)
+
+breakfastOption.addEventListener('click', onCategoryClick)
+lunchOption.addEventListener('click', onCategoryClick)
+dinnerOption.addEventListener('click', onCategoryClick)
+backButton.addEventListener('click', onBackClick)
+addButton.addEventListener('click', onAdd);
+dailyBtn.addEventListener('click', onDailyClick);
