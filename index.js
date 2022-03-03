@@ -12,6 +12,7 @@ const breakfastOption = document.getElementById('breakfast-option');
 const lunchOption = document.getElementById('lunch-option');
 const dinnerOption = document.getElementById('dinner-option');
 
+
 // nutrition table cells
 const calorieValueCell = document.getElementById('calorie-value');
 const cholValueCell = document.getElementById('cholesterol-value');
@@ -71,7 +72,6 @@ function onBackClick() {
     nutritionTable.style.display = "none"
 
 }
-
 function onDailyClick() {
     const badge = document.getElementById('badge');
     badge.style.display = "none";
@@ -138,6 +138,7 @@ function onCategoryClick(event) {
 breakfastOption.addEventListener('click', onCategoryClick)
 lunchOption.addEventListener('click', onCategoryClick)
 dinnerOption.addEventListener('click', onCategoryClick)
+
 
 backButton.addEventListener('click', onBackClick)
 
@@ -298,6 +299,5 @@ function onNameSubmit(event) {
     event.preventDefault();
     formContainer.style.display = "none";
     content.style.display = "inline-block";
-
 }
 nameForm.addEventListener('submit', onNameSubmit);
