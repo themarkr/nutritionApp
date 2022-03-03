@@ -317,6 +317,7 @@ function onNameSubmit(event) {
     text.innerText = `Welcome ${firstNameBar.value} ${lastNameBar.value}`;
     userOffCanvasLabel.innerText = `${firstNameBar.value}'s Daily Intake`
     landingImg.style.display = "none"
+    dailyBtn.style.visibility = "visible";
 }
 nameForm.addEventListener('submit', onNameSubmit);
 searchBar.addEventListener('click', displaySearchForItem)
