@@ -9,9 +9,9 @@
     <title>Nutrition App</title>
 </head>
 
-<body class="bg-success">
+<body>
     <!-- NAVIGATION BAR -->
-    <nav class="navbar navbar-light bg-light text-center>
+    <nav class="navbar navbar-light bg-light text-center">
         <div class="container-fluid">
             <span class="navbar-brand mb-0 h1 text-center">Meal Tracker</span>
         </div>
@@ -22,7 +22,7 @@
         <!-- DAILY INTAKE TRACKER -->
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header">
-                <h5 id="offcanvasRightLabel">Daily Intake Breakdown</h5>
+                <h5 id="offcanvasRightLabel"></h5>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
@@ -50,7 +50,7 @@
                 <table class="table table-success table-striped">
                     <thead>
                         <tr>
-                            <th scope="col" id="user-name"></th>
+                            <th scope="col" id="user-name">Daily Total</th>
                             <th scope="col">Value</th>
                             <th scope="col">Units</th>
                         </tr>
@@ -112,8 +112,8 @@
         </div>
     </nav>
     <div class="greeting">
-        <div class="container p-2 bg-primary text-white text-center" >
-            <h1>Welcome</h1>
+        <div class="container p-2 bg-primary text-white text-center">
+            <h1 id="webpageText">Login</h1>
         </div>
     </div>
     <!-- LANDING PAGE FORM -->
