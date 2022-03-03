@@ -9,11 +9,11 @@
     <title>Nutrition App</title>
 </head>
 
-<body>
+<body class='bg-warning'>
     <!-- NAVIGATION BAR -->
-    <nav class="navbar navbar-light bg-light text-center">
-        <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1 text-center">Meal Tracker</span>
+    <nav class="navbar navbar-light bg-warning text-center d-flex justify-content-center">
+        <div class="container-fluid d-flex justify-content-center">
+            <span class="navbar-brand mb-0 h1 text-center d-flex justify-content-center">Meal Tracker</span>
         </div>
         <button id="daily-intake-btn" class="btn btn-primary position-relative" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">View Daily Intake
             <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle" id="badge" style="display: none">
@@ -111,14 +111,15 @@
             </div>
         </div>
     </nav>
-    <div class="greeting">
-        <div class="container p-2 bg-primary text-white text-center">
-            <h1 id="webpageText">Login</h1>
+    <div class="card d-flex justify-content-center mx-auto" style="width:500px">
+        <div class="container p-2 bg-primary text-white text-center rounded">
+            <h1 id="webpageText" class="card-title">Login to your daily meal tracker</h1>
         </div>
-    </div>
+        <img id="landingImg" class="card-img-bottom" src="https://buyflow-web-assets.noom.com/buyflow-client/bf4c4927a3f0b22dca25f01907cccdbe2f3f1975/static/media/background-mobile.d94bfd084c975276d039d6161988f160.png" alt="Card image" style="width:100%">
+      </div>
     <!-- LANDING PAGE FORM -->
     <div id="container">
-        <form id="nameForm">
+        <form id="nameForm" class="mx-auto" style="width:500px">
             <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="firstName" placeholder="First Name">
                 <label>First Name</label>
@@ -133,7 +134,7 @@
     <!-- MAIN CONTENT -->
     <div id="menus" style="display: none" class="justify-content-center">
         <!-- FOOD ITEM SEARCH BAR -->
-        <div id="results" class="container-fluid">
+        <div id="results" class="container-fluid mx-auto">
             <form class="d-flex" id=search-form>
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="search-bar">
                 <button class="btn btn-outline-success" type="submit">Search</button>

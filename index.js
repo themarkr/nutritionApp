@@ -323,5 +323,6 @@ function onNameSubmit(event) {
     content.style.display = "inline-block";
     text.innerText = `Welcome ${firstNameBar.value} ${lastNameBar.value}`;
     userOffCanvasLabel.innerText = `${firstNameBar.value}'s Daily Intake`
+    landingImg.style.display = "none"
 }
 nameForm.addEventListener('submit', onNameSubmit);
