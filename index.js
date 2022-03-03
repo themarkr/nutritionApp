@@ -250,11 +250,12 @@ function displayFoodPicture(url) {
     document.getElementById('food-img').src = url;
 }
 
-function createBrandedElement(name, itemID) {
+function createBrandedElement(name, itemID, brandName, servingVal, servingUnits) {
     let foodItemElement = document.createElement('li')
     foodItemElement.className = "list-group-item d-flex justify-content-between align-items-start";
     let nameDiv = document.createElement('div')
     nameDiv.className = "ms-2 me-auto"
+    nameDiv.innerText = `Brand: ${brandName}   Serving Size: ${servingVal} ${servingUnits}`;
     let subheadingDiv = document.createElement('div')
     subheadingDiv.className = 'fw-bold';
     subheadingDiv.id = itemID;
@@ -266,11 +267,12 @@ function createBrandedElement(name, itemID) {
 
 }
 
-function createCommonElement(name) {
+function createCommonElement(name, servingVal, servingUnits) {
     let foodItemElement = document.createElement('li')
     foodItemElement.className = "list-group-item d-flex justify-content-between align-items-start";
     let nameDiv = document.createElement('div')
     nameDiv.className = "ms-2 me-auto"
+    nameDiv.innerText = `Serving Size: ${servingVal} ${servingUnits}`;
     let subheadingDiv = document.createElement('div')
     subheadingDiv.className = 'fw-bold';
     subheadingDiv.innerText = name;
@@ -294,10 +296,10 @@ function populateList() {
         .then(data => {
             console.log(data.common, data.branded)
             for (const item of data.branded) {
-                createBrandedElement(item["food_name"], item["nix_item_id"])
+                createBrandedElement(item["food_name"], item["nix_item_id"], item["brand_name"], item["serving_qty"], item["serving_unit"])
             }
             for (const item of data.common) {
-                createCommonElement(item["food_name"])
+                createCommonElement(item["food_name"], item["serving_qty"], item["serving_unit"])
             }
         })
 }
