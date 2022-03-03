@@ -1,5 +1,7 @@
 const formContainer = document.getElementById('container');
 const nameForm = document.getElementById('nameForm');
+const firstNameBar = document.getElementById('firstName');
+const lastNameBar = document.getElementById('lastName');
 const content = document.getElementById('menus');
 const searchForm = document.getElementById('search-form');
 const searchBar = document.getElementById('search-bar');
@@ -11,6 +13,8 @@ const dailyBtn = document.getElementById('daily-intake-btn');
 const breakfastOption = document.getElementById('breakfast-option');
 const lunchOption = document.getElementById('lunch-option');
 const dinnerOption = document.getElementById('dinner-option');
+const text = document.getElementById('webpageText');
+const userOffCanvasLabel = document.getElementById('offcanvasRightLabel')
 
 
 // nutrition table cells
@@ -88,19 +92,27 @@ function updateBadge() {
 }
 
 function updateDailyTable(cal, chol, fiber, potass, protein, sFat, sodium, sugars, totCarbs, totFat) {
-    console.log(dailyCalorieValueCell.innerText);
-    dailyCalorieValueCell.innerText = "" ? dailyCalorieValueCell.innerText = 1 * cal : dailyCalorieValueCell.innerText = +dailyCalorieValueCell.innerText + (1 * cal)
-    console.log(dailyCalorieValueCell.innerText);
-    dailyCholValueCell.innerText = 1 * dailyCholValueCell.innerText + chol * 1
-    dailyFiberValueCell.innerText = 1 * dailyFiberValueCell.innerText + fiber * 1
-    dailyPotassiumValueCell.innerText = 1 * dailyPotassiumValueCell.innerText + potass * 1
-    dailyProteinValueCell.innerText = 1 * dailyProteinValueCell.innerText + protein * 1
-    dailySatFatValueCell.innerText = 1 * dailySatFatValueCell.innerText + sFat * 1
-    dailySodiumValueCell.innerText = 1 * dailySodiumValueCell.innerText + sodium * 1
-    dailySugarValueCell.innerText = 1 * dailySugarValueCell.innerText + sugars * 1
-    dailyTotalCarbsValueCell.innerText = 1 * dailyTotalCarbsValueCell.innerText + totCarbs * 1
-    dailyFatsValueCell.innerText = 1 * dailyFatsValueCell.innerText + totFat * 1
-
+    dailyTotals["calories"] += cal * 1;
+    dailyTotals["cholesterol"] += chol * 1
+    dailyTotals["fiber"] += fiber * 1
+    dailyTotals["potass"] += potass * 1
+    dailyTotals["protein"] += protein * 1
+    dailyTotals["sFat"] += sFat * 1
+    dailyTotals["sodium"] += sodium * 1
+    dailyTotals["sugars"] += sugars * 1
+    dailyTotals["totCarbs"] += totCarbs * 1
+    dailyTotals["totFat"] += totFat * 1
+    console.log(dailyTotals);
+    dailyCalorieValueCell.innerText = dailyTotals["calories"]
+    dailyCholValueCell.innerText = dailyTotals["cholesterol"];
+    dailyFiberValueCell.innerText = dailyTotals["fiber"];
+    dailyPotassiumValueCell.innerText = dailyTotals["potass"];
+    dailyProteinValueCell.innerText = dailyTotals["protein"];
+    dailySatFatValueCell.innerText = dailyTotals["sFat"];
+    dailySodiumValueCell.innerText = dailyTotals["sodium"];
+    dailySugarValueCell.innerText = dailyTotals["sugars"];
+    dailyTotalCarbsValueCell.innerText = dailyTotals["totCarbs"];
+    dailyFatsValueCell.innerText = dailyTotals["totFat"];
 }
 
 function onAdd(event) {
@@ -293,12 +305,21 @@ function onQuerySubmit(event) {
     event.preventDefault();
     clearList();
     populateList();
+    text.innerText = `Results for: ${searchBar.value}`;
 }
 searchForm.addEventListener('submit', onQuerySubmit)
+
+function displaySearchForItem() {
+    text.innerText = "Search for any food item"
+}
+
+searchBar.addEventListener('click', displaySearchForItem)
 
 function onNameSubmit(event) {
     event.preventDefault();
     formContainer.style.display = "none";
     content.style.display = "inline-block";
+    text.innerText = `Welcome ${firstNameBar.value} ${lastNameBar.value}`;
+    userOffCanvasLabel.innerText = `${firstNameBar.value}'s Daily Intake`
 }
 nameForm.addEventListener('submit', onNameSubmit);
