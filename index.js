@@ -40,15 +40,15 @@ const dailyNameCell = document.getElementById('item-name');
 // USER FOOD LOGS
 const dailyTotals = {
         calories: 0,
-        cholesterol = 0,
-        fiber = 0,
-        potass = 0,
-        protein = 0,
-        sFat = 0,
-        sodium = 0,
-        sugars = 0,
-        totCarbs = 0,
-        totFat = 0
+        cholesterol: 0,
+        fiber: 0,
+        potass: 0,
+        protein: 0,
+        sFat: 0,
+        sodium: 0,
+        sugars: 0,
+        totCarbs: 0,
+        totFat: 0
     }
     // API URLs
 const commonURL = "https://trackapi.nutritionix.com/v2/natural/nutrients"
@@ -72,6 +72,7 @@ function onBackClick() {
     nutritionTable.style.display = "none"
 
 }
+
 function onDailyClick() {
     const badge = document.getElementById('badge');
     badge.style.display = "none";
