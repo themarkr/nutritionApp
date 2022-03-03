@@ -89,7 +89,7 @@ function updateBadge() {
 
 function updateDailyTable(cal, chol, fiber, potass, protein, sFat, sodium, sugars, totCarbs, totFat) {
     console.log(dailyCalorieValueCell.innerText);
-    dailyCalorieValueCell.innerText = "" ? dailyCalorieValueCell.innerText = 1 * cal : dailyCalorieValueCell.innerText = +dailyCalorieValueCell.innerText + (1 * cal)
+    dailyCalorieValueCell.innserText = "" ? dailyCalorieValueCell.innerText = 1 * cal : dailyCalorieValueCell.innerText = +dailyCalorieValueCell.innerText + (1 * cal)
     console.log(dailyCalorieValueCell.innerText);
     dailyCholValueCell.innerText = 1 * dailyCholValueCell.innerText + chol * 1
     dailyFiberValueCell.innerText = 1 * dailyFiberValueCell.innerText + fiber * 1
