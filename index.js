@@ -92,6 +92,7 @@ function updateBadge() {
 }
 
 function updateDailyTable(cal, chol, fiber, potass, protein, sFat, sodium, sugars, totCarbs, totFat) {
+
     dailyTotals["calories"] += cal * 1;
     dailyTotals["cholesterol"] += chol * 1
     dailyTotals["fiber"] += fiber * 1
@@ -113,6 +114,7 @@ function updateDailyTable(cal, chol, fiber, potass, protein, sFat, sodium, sugar
     dailySugarValueCell.innerText = dailyTotals["sugars"];
     dailyTotalCarbsValueCell.innerText = dailyTotals["totCarbs"];
     dailyFatsValueCell.innerText = dailyTotals["totFat"];
+
 }
 
 function onAdd(event) {
