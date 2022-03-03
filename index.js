@@ -15,9 +15,7 @@ const lunchOption = document.getElementById('lunch-option');
 const dinnerOption = document.getElementById('dinner-option');
 const text = document.getElementById('webpageText');
 const userOffCanvasLabel = document.getElementById('offcanvasRightLabel')
-
-
-// nutrition table cells
+    // nutrition table cells
 const calorieValueCell = document.getElementById('calorie-value');
 const cholValueCell = document.getElementById('cholesterol-value');
 const fiberValueCell = document.getElementById('dietary-fibers-value');
@@ -74,8 +72,13 @@ function onBackClick() {
     const nutritionTable = document.getElementById('nutrition-facts');
     results.style.display = "inline-block";
     nutritionTable.style.display = "none"
-
+    text.innerHTML = `Results for: ${searchBar.value}`;
 }
+
+function onXclick() {
+    clearList();
+}
+searchBar.addEventListener('click', onXclick)
 
 function onDailyClick() {
     const badge = document.getElementById('badge');
@@ -202,6 +205,7 @@ function onBrandedClick(event) {
             toggleTable();
             updateNutritionTable(foodName, calories, cholesterol, diataryFibers, potassium, protein, saturatedFat, sodium, sugars, totalCarbs, totalFat)
             displayFoodPicture(photoURL);
+            text.innerText = `Nutrition Facts for: ${foodName}`
         })
 }
 
@@ -238,6 +242,7 @@ function onCommonClick(event) {
             toggleTable();
             updateNutritionTable(foodName, calories, cholesterol, diataryFibers, potassium, protein, saturatedFat, sodium, sugars, totalCarbs, totalFat)
             displayFoodPicture(photoURL);
+            text.innerText = `Nutrition Facts for: ${foodName}`
         })
 }
 
