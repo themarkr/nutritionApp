@@ -104,16 +104,16 @@ function updateDailyTable(cal, chol, fiber, potass, protein, sFat, sodium, sugar
     dailyTotals["totCarbs"] += +(totCarbs * 1).toFixed(2);
     dailyTotals["totFat"] += +(totFat * 1).toFixed(2);
     console.log(dailyTotals);
-    dailyCalorieValueCell.innerText = dailyTotals["calories"]
-    dailyCholValueCell.innerText = dailyTotals["cholesterol"];
-    dailyFiberValueCell.innerText = dailyTotals["fiber"];
-    dailyPotassiumValueCell.innerText = dailyTotals["potass"];
-    dailyProteinValueCell.innerText = dailyTotals["protein"];
-    dailySatFatValueCell.innerText = dailyTotals["sFat"];
-    dailySodiumValueCell.innerText = dailyTotals["sodium"];
-    dailySugarValueCell.innerText = dailyTotals["sugars"];
-    dailyTotalCarbsValueCell.innerText = dailyTotals["totCarbs"];
-    dailyFatsValueCell.innerText = dailyTotals["totFat"];
+    dailyCalorieValueCell.innerText = Math.floor(dailyTotals["calories"])
+    dailyCholValueCell.innerText = Math.floor(dailyTotals["cholesterol"])
+    dailyFiberValueCell.innerText = Math.floor(dailyTotals["fiber"])
+    dailyPotassiumValueCell.innerText = Math.floor(dailyTotals["potass"])
+    dailyProteinValueCell.innerText = Math.floor(dailyTotals["protein"])
+    dailySatFatValueCell.innerText = Math.floor(dailyTotals["sFat"])
+    dailySodiumValueCell.innerText = Math.floor(dailyTotals["sodium"])
+    dailySugarValueCell.innerText = Math.floor(dailyTotals["sugars"])
+    dailyTotalCarbsValueCell.innerText = Math.floor(dailyTotals["totCarbs"])
+    dailyFatsValueCell.innerText = Math.floor(dailyTotals["totFat"])
 
 }
 
@@ -151,16 +151,16 @@ function onCategoryClick(event) {
 
 function updateNutritionTable(name, calValue, cholValue, fiberValue, potassiumValue, proteinValue, saturatedFatValue, sodiumValue, sugarsValue, totalCarbsValue, totalFatValue) {
 
-    calorieValueCell.innerText = calValue;
-    cholValueCell.innerText = cholValue;
-    fiberValueCell.innerText = fiberValue;
-    potassiumValueCell.innerText = potassiumValue;
-    proteinValueCell.innerText = proteinValue;
-    satFatValueCell.innerText = saturatedFatValue;
-    sodiumValueCell.innerText = sodiumValue;
-    sugarValueCell.innerText = sugarsValue;
-    totalCarbsValueCell.innerText = totalCarbsValue;
-    fatsValueCell.innerText = totalFatValue;
+    calorieValueCell.innerText = calValue.toFixed(2);
+    cholValueCell.innerText = cholValue.toFixed(2);
+    fiberValueCell.innerText = fiberValue.toFixed(2);
+    potassiumValueCell.innerText = potassiumValue.toFixed(2);
+    proteinValueCell.innerText = proteinValue.toFixed(2);
+    satFatValueCell.innerText = saturatedFatValue.toFixed(2);
+    sodiumValueCell.innerText = sodiumValue.toFixed(2);
+    sugarValueCell.innerText = sugarsValue.toFixed(2);
+    totalCarbsValueCell.innerText = totalCarbsValue.toFixed(2);
+    fatsValueCell.innerText = totalFatValue.toFixed(2);
     nameCell.innerText = name
 }
 
