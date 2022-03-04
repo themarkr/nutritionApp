@@ -93,16 +93,16 @@ function updateBadge() {
 
 function updateDailyTable(cal, chol, fiber, potass, protein, sFat, sodium, sugars, totCarbs, totFat) {
 
-    dailyTotals["calories"] += cal * 1;
-    dailyTotals["cholesterol"] += chol * 1
-    dailyTotals["fiber"] += fiber * 1
-    dailyTotals["potass"] += potass * 1
-    dailyTotals["protein"] += protein * 1
-    dailyTotals["sFat"] += sFat * 1
-    dailyTotals["sodium"] += sodium * 1
-    dailyTotals["sugars"] += sugars * 1
-    dailyTotals["totCarbs"] += totCarbs * 1
-    dailyTotals["totFat"] += totFat * 1
+    dailyTotals["calories"] += +(cal * 1).toFixed(2);
+    dailyTotals["cholesterol"] += +(chol * 1).toFixed(2);
+    dailyTotals["fiber"] += +(fiber * 1).toFixed(2);
+    dailyTotals["potass"] += +(potass * 1).toFixed(2);
+    dailyTotals["protein"] += +(protein * 1).toFixed(2);
+    dailyTotals["sFat"] += +(sFat * 1).toFixed(2);
+    dailyTotals["sodium"] += +(sodium * 1).toFixed(2);
+    dailyTotals["sugars"] += +(sugars * 1).toFixed(2);
+    dailyTotals["totCarbs"] += +(totCarbs * 1).toFixed(2);
+    dailyTotals["totFat"] += +(totFat * 1).toFixed(2);
     console.log(dailyTotals);
     dailyCalorieValueCell.innerText = dailyTotals["calories"]
     dailyCholValueCell.innerText = dailyTotals["cholesterol"];
